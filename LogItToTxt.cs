@@ -13,10 +13,8 @@ namespace HCD.Logger.Txt
         FATAL = 3,
     }
 
-
     public class LogItToTxt
     {
-       
         public static void Add(string logText, AlertType alertType, string specialMark = "")
         {
             if (string.IsNullOrEmpty(specialMark) == false)
@@ -31,7 +29,6 @@ namespace HCD.Logger.Txt
         {
             string basePath =  CreateDirectoryIfNotExist();
             string filePath = CreateFileIfNotExist(basePath);
-
 
             string contentOfTxtFile = File.ReadAllText(filePath);
             contentOfTxtFile = string.Format($"{logLineText}{Environment.NewLine}{contentOfTxtFile}");
@@ -58,7 +55,6 @@ namespace HCD.Logger.Txt
                 {
                     File.Create(filePath).Close();
                 }
-                    
             }
             catch (Exception ex)
             {
@@ -66,7 +62,6 @@ namespace HCD.Logger.Txt
             }
 
             return filePath;
-
         }
 
         private static string CreateDirectoryIfNotExist()
@@ -75,7 +70,6 @@ namespace HCD.Logger.Txt
             try
             {
                 Directory.CreateDirectory(basePath);
-
             }
             catch (Exception ex)
             {
@@ -84,7 +78,5 @@ namespace HCD.Logger.Txt
 
             return basePath;
         }
-    }
-
-    
+    }    
 }
